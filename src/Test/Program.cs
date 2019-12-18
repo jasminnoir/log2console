@@ -2,25 +2,21 @@ using System;
 
 using log4net;
 
-
 // Configure log4net using the .config file
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
-
 
 namespace Test
 {
     using Company.Product.BusinessLogic;
     using Company.Product.ServiceTester;
 
-
-    class Program
+    internal class Program
     {
         // Create a logger for use in this class.
-        static readonly ILog _log = 
+        private static readonly ILog _log =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.X)
@@ -31,7 +27,7 @@ namespace Test
             }
         }
 
-        static void DoWinDebug()
+        private static void DoWinDebug()
         {
             Console.WriteLine("Doing WinDebug!");
 
@@ -39,7 +35,7 @@ namespace Test
             System.Diagnostics.Trace.WriteLine("This is a call to System.Diagnostics.Trace");
         }
 
-        static void DoLog()
+        private static void DoLog()
         {
             Console.WriteLine("Doing Log!");
 
@@ -55,7 +51,6 @@ namespace Test
 
             if (_log.IsInfoEnabled)
                 _log.Info("This is an Info...");
-
 
             _log.Warn("This is a Warning...");
             _log.Fatal("This is a Fatal...");
@@ -74,15 +69,12 @@ namespace Test
     }
 }
 
-
 namespace Company.Product.BusinessLogic
 {
-
     public class DummyManager
     {
         public static readonly ILog _log =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
 
         public DummyManager()
         {
@@ -106,12 +98,10 @@ namespace Company.Product.BusinessLogic
 
 namespace Company.Product.ServiceTester
 {
-
     public class DummyTester
     {
         public static readonly ILog _log =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
 
         public DummyTester()
         {
@@ -132,5 +122,3 @@ namespace Company.Product.ServiceTester
         }
     }
 }
-
-
